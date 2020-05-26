@@ -1,0 +1,40 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.danlogan.pegsandjokers",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "6.1.2",
+    "applicationType": "monolith",
+    "baseName": "JhipsterPegsAndJokers",
+    "packageName": "com.danlogan.pegsandjokers",
+    "packageFolder": "com/danlogan/pegsandjokers",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "no",
+    "devDatabaseType": "no",
+    "prodDatabaseType": "no",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "NzczMmEwNDYyMDA0NDk0NmJhZjA3YmM5MjNkYWI1ZTFlMDFmYjYxOWI5NTE2MWUxNTdlNDNhNmIyYzAwZjVlNzU5MjRlYzVlNDE2NzU5ZTc2Yjg4NmM5YTY2YmQwNzlkY2E4MTNhNDMwN2E5Njg3YmE4NGFlZDQ3M2ZjYmFiMzM=",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "languages": ["en"]
+  }
+}
