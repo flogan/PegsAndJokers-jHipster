@@ -1,12 +1,12 @@
 package com.danlogan.pegsandjokers.domain;
 
 public enum Color {
-	RED,
-	BLUE,
-	GREEN,
+	Tomato,
+	LightBlue,
+	LightGreen,
 	PINK,
 	ORANGE,
-	PURPLE,
+	LemonChiffon,
 	SIENNA,
 	PLUM
 }

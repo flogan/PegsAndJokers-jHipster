@@ -51,6 +51,21 @@ public class PlayerView {
 		return this.game.getPlayerPositions(this.playerNumber);
 	}
 	
+	public ArrayList<ArrayList<PlayerPosition>> getOtherPlayerPositions()
+	{
+		ArrayList result = new ArrayList<ArrayList<PlayerPosition>>();
+		
+		for(Player p : this.game.getPlayers())
+		{
+			if (this.playerNumber != p.getNumber())
+			{
+				result.add(this.game.getPlayerPositions(p.getNumber()));
+			}
+			
+		}
+		return result;
+	}
+	
 	public ArrayList<Move> getAllowedMoves()
 	{
 		ArrayList<Move> allowedMoves =  new ArrayList<Move>();

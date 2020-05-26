@@ -31,6 +31,11 @@ public class BoardPosition {
 		return getHasPeg() ? peg.getColor() : null;
 	}
 	
+	public Integer getPegNumber()
+	{
+		return getHasPeg() ? Integer.valueOf(peg.getNumber()) : null;
+	}
+		
 	public String getId()
 	{
 		return this.id;
