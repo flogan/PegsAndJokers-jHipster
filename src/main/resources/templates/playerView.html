@@ -1,0 +1,83 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pegs and Jokers</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+</head>
+<body>
+<div> 
+<h1>Player View </h1>
+Player color is: <span th:text="${playerView.playerColor}">player color</span><br/>
+Player message: <span th:text="${playerView.playerMessage}">current player's name</span>
+
+<h2>Player Hand</h2>
+
+<table>
+	<tr><th>Card Name</th></tr>
+	<tr th:each="card : ${playerView.playerHand.cards}">
+		<td th:text="${card.name}">Card Name</td>
+	</tr>
+</table>
+
+<h2>Player Positions</h2>
+
+<table>
+	<tr><th>Player Position</th></tr>
+	<tr th:each="position : ${playerView.playerPositions}">
+		<td th:text="${position.playerBoardPosition.id}">Board Position Id</td>
+	</tr>
+</table>
+
+<!-- 
+<br/>turn player number:<span th:text="${turnRequest.playerNumber}">player number</span><br/> 
+ -->
+ 
+<h2>Take a turn</h2>
+ 
+ <form action="#" th:action="@{/mvc/taketurn}" th:object="${turnRequest}" method="post">
+    	<input type="hidden" th:field="*{playerNumber}" />
+    	<input type="hidden" th:field="*{gameId}" />
+ <!--        <p>Card Name: <input type="text" th:field="*{cardName}" />  -->
+ 		<select th:field="*{cardName}">
+ 		 <option th:each="card : ${playerView.playerHand.cards}" 
+          th:value="${card.name}" 
+          th:text="${card.name}">card name here</option>
+		</select><br/>
+	    <input type="radio" th:field="*{moveType}" th:value="DISCARD" />
+		<label for="DISCARD">Discard</label><br>
+ 	    <input type="radio" th:field="*{moveType}" th:value="START_A_PEG" />
+		<label for="START_A_PEG">Start a Peg</label><br>
+ 	    <input type="radio" th:field="*{moveType}" th:value="MOVE_PEG" />
+		<label for="MOVE_PEG">Move Peg</label><br>
+		<p>Player Position Number: <input type="number" min="1" max="5" th:field="*{playerPositionNumber}" /> </p>
+        <p>Move Distance: <input type="number" min="-8" max="13" th:field="*{moveDistance}" /> </p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+    
+ <h2>Current Board</h2>
+ <table>
+ 	<tr> 
+ 	<th>Side Color</th><th>Start1</th><th>Start2</th><th>Start3</th><th>Start4</th><th>Start5</th><th>Home1</th><th>Home2</th><th>Home3</th><th>Home4</th><th>Home5</th><th>Space1</th><th>Space2</th><th>Space3</th><th>Space4</th><th>Space5</th><th>Space6</th><th>Space7</th><th>Space8</th><th>Space9</th><th>Space10</th><th>Space11</th><th>Space12</th><th>Space13</th><th>Space14</th><th>Space15</th><th>Space16</th><th>Space17</th><th>Space18</th>
+ 	</tr> 
+ 	<tr th:each="side : ${playerView.board.playerSides}">
+ 		<td th:bgcolor="${side.color}" th:text="${side.color}">color</td>
+  		<td th:each="sp : ${side.startPositions}" th:bgcolor="${sp.pegColor}">
+ 				<span th:text="${sp.pegColor}">peg color</span>
+		</td>
+ 		<td th:each="hp : ${side.homePositions}" th:bgcolor="${hp.pegColor}">
+ 				<span th:text="${hp.pegColor}">peg color</span>
+		</td>
+ 		<td th:each="mp : ${side.mainTrackPositions}" th:bgcolor="${mp.pegColor}">
+ 				<span th:text="${mp.pegColor}">peg color</span>
+		</td>
+	</tr>
+ 	
+ </table>
+     
+ </div>      
+</body>
+</html>
