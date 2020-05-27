@@ -36,7 +36,7 @@ public class Game {
 			Builder builder = new Builder();
 			//Intialize initialPlayerPostions to an 8 player by 5 position two-dimensional array list
 			
-			 for (int player=0;player<5;player++)
+			 for (int player=0;player<8;player++)
 			 {
 				 builder.initialPlayerPositionIds.add(new ArrayList<String>());
 				 
@@ -57,11 +57,28 @@ public class Game {
 		{
 			int playerNumber = players.size() + 1;
 			Player player = Player.Builder.newInstance()
-					.withName("Player " + playerNumber)
+					.withName(playerName)
 					.withNumber(playerNumber)
 					.build();
 			
 			players.add(player);
+			
+			return this;
+		}
+		
+		public Builder withNumberOfPlayers(int numberOfPlayers)
+		{
+			for (int i=1;i<=numberOfPlayers;i++)
+			{
+				int playerNumber = players.size()+1;
+				Player player = Player.Builder.newInstance()
+						.withName("Player " + playerNumber)
+						.withNumber(playerNumber)
+						.build();
+				
+				players.add(player);
+						
+			}
 			
 			return this;
 		}
@@ -678,7 +695,7 @@ public class Game {
 	{
 		PlayerPosition  positionToReturn = null;
 		
-		for(int p = 1; p<=this.playerPositions.size();p++)
+		for(int p = 0; p<this.playerPositions.size();p++)
 		{
 			for (PlayerPosition playerPosition : this.playerPositions.get(p))
 			{
