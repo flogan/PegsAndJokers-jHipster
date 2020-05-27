@@ -56,6 +56,7 @@ import com.danlogan.pegsandjokers.infrastructure.GameRepository;
 
 
 @SpringBootApplication
+@Controller
 @EnableConfigurationProperties({ApplicationProperties.class})
 public class JhipsterPegsAndJokersApp implements InitializingBean {
 
@@ -132,7 +133,7 @@ public class JhipsterPegsAndJokersApp implements InitializingBean {
     }
 
     private static GameRepository gameRepository = new GameRepository();
-    
+
     //Return all Games
 	@GetMapping("/games")
 	@ResponseBody
@@ -144,7 +145,7 @@ public class JhipsterPegsAndJokersApp implements InitializingBean {
 	}
 
 
-	//New Game API
+    //New Game API
 	@PostMapping("/games")
 	@ResponseBody
 	public ResponseEntity<Game> newGame(UriComponentsBuilder ucb) throws CannotStartGameWithoutPlayersException

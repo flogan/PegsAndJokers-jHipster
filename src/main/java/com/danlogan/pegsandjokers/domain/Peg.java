@@ -18,7 +18,7 @@ public class Peg {
 	
 	public int getNumber()
 	{
-		return this.getNumber();
+		return this.number;
 	}
 
 }
