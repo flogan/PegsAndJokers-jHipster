@@ -19,6 +19,9 @@ import { JhipsterPegsAndJokersEntityModule } from './entities/entity.module';
 import * as moment from 'moment';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
+import { NewGameComponent } from './new-game/new-game.component';
+import { PlayerViewComponent } from './player-view/player-view.component';
+import { GamesComponent } from './games/games.component';
 
 @NgModule({
   imports: [
@@ -38,7 +41,17 @@ import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent
     JhipsterPegsAndJokersEntityModule,
     JhipsterPegsAndJokersAppRoutingModule
   ],
-  declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
+  declarations: [
+    JhiMainComponent,
+    NavbarComponent,
+    ErrorComponent,
+    PageRibbonComponent,
+    ActiveMenuDirective,
+    FooterComponent,
+    NewGameComponent,
+    PlayerViewComponent,
+    GamesComponent
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

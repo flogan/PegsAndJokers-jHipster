@@ -1,0 +1,15 @@
+<h2>Create a new Game!</h2>
+
+<p>TODO: Include a form for player name and game name</p>
+<div>
+    <p>This will just be returned in the background, then posts to new player and new game</p>
+    <h3>New game Id: {{ game.id }}</h3>
+    <h3>Players</h3>
+    <div *ngFor="let player of game.players">
+        {{ player.name }}
+    </div>
+</div>
+
+<div>
+    <button [routerLink]="['/board-view', game.id, 1]">Start Game!</button>
+</div>
