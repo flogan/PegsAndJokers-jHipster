@@ -4,11 +4,13 @@ public class Card {
 	private final CardRank rank;
 	private final String name;
 	private final Suit suit;
+	private final String cardPath;
 
 	public Card(CardRank rank, Suit suit) {
 		this.rank = rank;
 		this.suit = suit;
 		this.name = String.format("%s of %s",rank,suit);
+		this.cardPath = String.format("../../content/images/cards/Playing_card_%s.svg", name);
 	}
 
 	public CardRank getRank() {
@@ -21,6 +23,10 @@ public class Card {
 
 	public Suit getSuit() {
 		return suit;
+	}
+
+	public String getPath() {
+		return cardPath;
 	}
 	
 	public boolean isJoker() {

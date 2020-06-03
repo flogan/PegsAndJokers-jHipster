@@ -13,15 +13,16 @@ export class PlayerViewComponent implements OnInit {
   temp: any;
   playerView: any;
   cards: Array<any>;
+  cardPaths: Array<any>;
   sub: Subscription;
-
-  constructor(private route: ActivatedRoute, private router: Router, private playerService: PlayerService) {}
+  sides: BoardSide[] = [];
 
   @ViewChild('canvas', { static: true })
   canvas: ElementRef<HTMLCanvasElement>;
   private ctx: CanvasRenderingContext2D;
 
-  sides: BoardSide[] = [];
+  constructor(private route: ActivatedRoute, private router: Router, private playerService: PlayerService) {}
+
   ngOnInit(): void {
     this.sub = this.route.params.subscribe(params => {
       const gameId = params['gameId'];
@@ -30,8 +31,8 @@ export class PlayerViewComponent implements OnInit {
         this.playerService.getPlayerView(gameId, playerNum).subscribe(data => {
           this.temp = JSON.stringify(data);
           this.playerView = data;
-          this.initBoard(data);
           this.cards = data.playerHand.cards;
+          this.initBoard(data);
         });
       }
     });
@@ -42,12 +43,12 @@ export class PlayerViewComponent implements OnInit {
     this.ctx.fillStyle = 'papayawhip';
     this.ctx.fillRect(0, 0, this.canvas.nativeElement.width, this.canvas.nativeElement.height);
     const numPlayers = this.playerView.board.playerSides.length;
-    var rotationStep = (-2 * Math.PI) / numPlayers;
-    var boardLength = 720; //TODO: scale board size and pegs with players appropriately. Possibly Add responsivity to canvas, and grab which center
-    var radius = boardLength / (2 * Math.tan(Math.PI / numPlayers));
+    const rotationStep = (-2 * Math.PI) / numPlayers;
+    const boardLength = 720; // TODO: scale board size and pegs with players appropriately. Possibly Add responsivity to canvas, and grab which center
+    const radius = boardLength / (2 * Math.tan(Math.PI / numPlayers));
     for (let player = 0; player < numPlayers; player++) {
-      var x = 500 + this.displacedX(radius, rotationStep * player);
-      var y = 500 + this.displacedY(radius, rotationStep * player);
+      let x = 500 + this.displacedX(radius, rotationStep * player);
+      let y = 500 + this.displacedY(radius, rotationStep * player);
       console.log('x: ' + x);
       console.log('y: ' + y);
       this.ctx.lineWidth = 10;
@@ -56,11 +57,16 @@ export class PlayerViewComponent implements OnInit {
   }
 
   private displacedX(distance: number, angle: number): number {
-    return distance * Math.sin(angle); //negative angles
+    return distance * Math.sin(angle); // negative angles
   }
 
   private displacedY(distance: number, angle: number): number {
-    return distance * Math.cos(angle); //negative angles
+    return distance * Math.cos(angle); // negative angles
+  }
+
+  getCardImg(cardName) {
+    console.log('../../content/images/cards/Playing_card_' + cardName + '.svg');
+    return require('../../content/images/cards/Playing_card_' + cardName + '.svg');
   }
 
   log(): void {
