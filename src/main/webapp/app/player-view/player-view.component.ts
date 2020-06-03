@@ -64,11 +64,6 @@ export class PlayerViewComponent implements OnInit {
     return distance * Math.cos(angle); // negative angles
   }
 
-  getCardImg(cardName) {
-    console.log('../../content/images/cards/Playing_card_' + cardName + '.svg');
-    return require('../../content/images/cards/Playing_card_' + cardName + '.svg');
-  }
-
   log(): void {
     console.log(this.playerView);
   }
