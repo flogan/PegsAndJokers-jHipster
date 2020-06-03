@@ -13,7 +13,6 @@ export class PlayerViewComponent implements OnInit {
   temp: any;
   playerView: any;
   cards: Array<any>;
-  cardPaths: Array<any>;
   sub: Subscription;
   sides: BoardSide[] = [];
 
@@ -31,7 +30,7 @@ export class PlayerViewComponent implements OnInit {
         this.playerService.getPlayerView(gameId, playerNum).subscribe(data => {
           this.temp = JSON.stringify(data);
           this.playerView = data;
-          this.cards = data.playerHand.cards;
+          this.initCards(data.playerHand.cards);
           this.initBoard(data);
         });
       }
@@ -62,6 +61,13 @@ export class PlayerViewComponent implements OnInit {
 
   private displacedY(distance: number, angle: number): number {
     return distance * Math.cos(angle); // negative angles
+  }
+
+  initCards(cards) {
+    this.cards = cards;
+    this.cards.forEach(card => {
+      card.path = `../../content/images/cards/Playing_card_${card.name}.svg`;
+    });
   }
 
   log(): void {

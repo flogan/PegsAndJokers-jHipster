@@ -6,8 +6,7 @@
 
 <button (click)="log()">Log</button>
 <div class="center">
-    <h2>Cards</h2>
-    <div *ngFor="let card of cards" >
-        <img src="{{ card.path }}">
+    <div class="cards" *ngFor="let card of cards" width="50%">
+        <img src="{{ card.path }}" alt="{{ card.name }}">
     </div>
 </div>
